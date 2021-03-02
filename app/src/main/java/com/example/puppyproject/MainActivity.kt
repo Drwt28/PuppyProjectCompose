@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PlayArrow
@@ -108,56 +109,100 @@ fun Greeting(name: String,navigator: NavHostController) {
                 Card(
 
                     modifier = Modifier
-                        .fillMaxWidth().padding(8.dp),
+                        .fillMaxWidth()
+                        .padding(8.dp),
                     elevation = 3.dp,
                     shape = CutCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
 
                 ) {
-
                     Row(
-
-
-                                modifier = Modifier.clickable {
-
-                            navigator.navigate("detailScreen");
-                        }.padding(5.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                        verticalAlignment = Alignment.CenterVertically
-
-
-                        ){
-                        Surface(
-
-                            modifier = Modifier
-                                .height(80.dp)
-                                .width(80.dp)
-                                .clip(
-                                    shape = CircleShape
-                                ),
-                            color = Color.Yellow
-
-                        ){
+                        modifier = Modifier
+                            .size(150.dp)
+                            .background(Color.Yellow),
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.Top
+                    ) {
+                        Box(
+                            Modifier
+                                .size(150.dp)
+                                .background(Color.Red)
+                                .weight(1f)){
                             CoilImage(
-                                data = it.imageUrl,
-                                contentDescription = "contentDescription",
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier
-                                    .width(48.dp)
-                                    .height(48.dp)
-                                    .clip(shape = CircleShape),
-                            )
-                        }
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.SpaceBetween
 
-                        ) {
-                            Text(it.name,style = MaterialTheme.typography.h6)
-                            Text("Rs "+it.price.toString(),style = MaterialTheme.typography.subtitle1)
+                                    data = it.imageUrl,
+                                    contentDescription = "contentDescription",
+                                    contentScale = ContentScale.Crop,
+
+                                   )
+                        }
+                        Box(
+
+                            Modifier
+                                .background(Color.Yellow)
+                                .size(50.dp)
+                                .padding(10.dp)
+                                .weight(1f)) {
+
+                            Column(){
+                                Text(it.name,style = MaterialTheme.typography.h6)
+                                Text("Rs "+it.price.toString(),style = MaterialTheme.typography.subtitle1)
+
+                            }
+
+//                            Box(Modifier.background(Color.White).fillMaxSize())
+
+                        }
+                        Box(
+                            Modifier
+                                .background(Color.White)
+                                .clip(shape = RoundedCornerShape(20.dp)).padding(10.dp)){
+                        Icon(imageVector = Icons.Filled.Favorite, contentDescription ="sad" )
                         }
 
-                        Icon(imageVector = Icons.Filled.Info, contentDescription = "info")
                     }
+
+//                    Row(
+//                        modifier = Modifier.clickable {
+//
+//                            navigator.navigate("detailScreen");
+//                        }.padding(5.dp),
+//                        horizontalArrangement = Arrangement.SpaceEvenly,
+//                        verticalAlignment = Alignment.CenterVertically
+//
+//
+//                        ){
+//                        Surface(
+//                            modifier = Modifier.fillMaxWidth(),
+//                            color = Color.Yellow
+//
+//                        ){
+//                        }
+//                        Column(
+//                            horizontalAlignment = Alignment.CenterHorizontally,
+//                            verticalArrangement = Arrangement.SpaceBetween
+//
+//                        ) {
+//
+//                            Surface(
+//                                modifier = Modifier.fillMaxWidth()
+//                            ){
+//                                CoilImage(
+//
+//                                    data = it.imageUrl,
+//                                    contentDescription = "contentDescription",
+//                                    contentScale = ContentScale.Crop,
+//
+//                                    )
+//
+//                            }
+//
+//                            Text(it.name,style = MaterialTheme.typography.h6)
+//                            Text("Rs "+it.price.toString(),style = MaterialTheme.typography.subtitle1)
+//
+                //                        }
+//
+//                        Icon(imageVector = Icons.Filled.Info, contentDescription = "info")
+//                    }
                 }
 
             }
@@ -381,10 +426,7 @@ private fun Image(
 
         modifier = Modifier
             .height(200.dp)
-            .width(200.dp)
-            .clip(
-                shape = CircleShape
-            ),
+            .width(200.dp),
         color = Color.Yellow
 
     ){
