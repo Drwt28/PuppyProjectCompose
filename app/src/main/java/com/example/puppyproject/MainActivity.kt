@@ -110,7 +110,10 @@ fun Greeting(name: String,navigator: NavHostController) {
 
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
+                        .padding(8.dp).clickable {
+                            navigator.navigate("detailScreen");
+
+                        },
                     elevation = 3.dp,
                     shape = CutCornerShape(topStart = 30.dp,bottomEnd = 30.dp)
 
